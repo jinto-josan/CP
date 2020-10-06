@@ -1,2 +1,2 @@
 # CP
-CP problem solutions in various solutions
+CP problem solutions in various java, python, c, cpp

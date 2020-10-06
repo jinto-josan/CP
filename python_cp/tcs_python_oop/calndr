@@ -1,0 +1,33 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+#
+# Complete the 'calen' function below.
+#
+# The function accepts TUPLE datetuple as parameter.
+#
+import calendar
+from collections import deque,Counter
+def usingcalendar(datetuple):
+    # Write your code here
+    mnth=datetuple[1]
+    if calendar.isleap(datetuple[0]):
+        mnth=2
+    print(calendar.month(datetuple[0],mnth))
+
+    qe = deque(calendar.Calendar().itermonthdates(datetuple[0],mnth),maxlen=7)
+    lst =[i for i in qe]
+    print(lst)
+    count = Counter( d.strftime("%A") for d in calendar.Calendar().itermonthdates(datetuple[0],mnth) if d.month==mnth)
+    print(count.most_common(1)[0][0])
+        
+
+
+if __name__ == '__main__':

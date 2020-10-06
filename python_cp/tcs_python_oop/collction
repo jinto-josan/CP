@@ -1,0 +1,55 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+#
+# Complete the 'collectionfunc' function below.
+#
+# The function accepts following parameters:
+#  1. STRING text1
+#  2. DICTIONARY dictionary1
+#  3. LIST key1
+#  4. LIST val1
+#  5. DICTIONARY deduct
+#  6. LIST list1
+#
+from collections import Counter
+def collectionfunc(text1, dictionary1, key1, val1, deduct, list1):
+    # Write your code here
+    #Creating a dictionary with key as words in text and val as count
+    cntr = dict(Counter(w for w in text1.split(" ")))
+    print({k:cntr[k] for k in sorted(cntr)})
+    #cntr2=Counter(dictionary1)
+    #cntr3=Counter(deduct)
+    #print(dict(cntr2-cntr3))
+    #print(dictionary1)
+    #print(deduct)
+    res = {key: dictionary1[key] - deduct.get(key, 0) for key in dictionary1.keys()}
+    for key in deduct.keys():
+         if not dictionary1.get(key):
+            res[key]=-deduct[key]
+
+    print(res)
+    d={k:v for k,v in zip(key1,val1) if k!=key1[1]}
+    d[key1[1]]=val1[1]
+    print(d)
+    elst=[]
+    olst=[]
+    d=dict()
+    for i in list1:
+        if i%2==0:
+            elst.append(i)
+        else: olst.append(i)
+    if len(olst)>0:
+        d["odd"]=olst
+    if len(elst)>0:
+        d["even"]=elst
+    print(d)
+
+if __name__ == '__main__':

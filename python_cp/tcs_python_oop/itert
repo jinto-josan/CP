@@ -1,0 +1,35 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+#
+# Complete the 'usingiter' function below.
+#
+# The function is expected to return a TUPLE.
+# The function accepts following parameters:
+#  1. TUPLE tupb
+#
+import itertools
+import operator
+def performIterator(tuplevalues):
+    # Write your code here
+    lst=list()
+    lst2=list()
+    for i,j in enumerate( itertools.cycle(tuplevalues[0])) :
+        if i<4:
+            lst2.append(j)
+        else: break
+    lst.append(tuple(lst2))
+    lst.append(tuple([i for i in itertools.repeat(tuplevalues[1][0],4)]))
+    lst.append(tuple([ i for i in itertools.accumulate(tuplevalues[2],operator.mul)]))
+    lst.append(tuple([ i for i in itertools.chain(*lst)]))
+    lst.append(tuple([ i for i in itertools.filterfalse(lambda x : x%2==0 ,lst[3])]))
+    return tuple(lst)
+
+if __name__ == '__main__':
